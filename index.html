@@ -59,10 +59,9 @@
                         <i class="fa-solid fa-lock"></i> Admin Entry
                     </button>
                     <select id="weekSelect" onchange="changeWeek(this.value)" class="bg-slate-800 text-emerald-400 border border-slate-700 rounded-lg px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 transition cursor-pointer">
-                        <option value="4" selected>Week 4 (Completed)</option>
-                        <option value="3">Week 3</option>
-                        <option value="2">Week 2</option>
-                        <option value="1">Week 1</option>
+                        <option value="3" selected>Week 3 (Evian Resort)</option>
+                        <option value="2">Week 2 (Augusta Municipal)</option>
+                        <option value="1">Week 1 (Bayou Oaks South)</option>
                     </select>
                 </div>
             </div>
@@ -92,9 +91,9 @@
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                             <span id="overview-badge-status">THIS WEEK'S MATCH SETUP</span>
                         </div>
-                        <h2 id="overview-course-name" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Pebble Beach Golf Links</h2>
+                        <h2 id="overview-course-name" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Evian Resort Golf Club - Champions Course</h2>
                         <p id="overview-location" class="text-slate-400 mt-1 flex items-center gap-2 text-sm sm:text-base">
-                            <i class="fa-solid fa-location-dot text-red-400"></i> Monterey Peninsula, California • TrackMan Preset #4
+                            <i class="fa-solid fa-location-dot text-red-400"></i> Evian-les-Bains, France • Week 3 Match
                         </p>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -126,21 +125,21 @@
                         </h3>
                         <span class="text-xs bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700">12-Hole Consistency</span>
                     </div>
-                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                        Teams play from their assigned tee box (Front or Back tees) consistently across all 12 holes of the match.
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4" id="overview-tee-desc">
+                        Front Tees (White): 6,510 Yards | Back Tees (Black): 6,693 Yards
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-5">
                             <div class="flex items-center justify-between mb-2">
-                                <h4 class="font-bold text-blue-400 text-base">FRONT TEES</h4>
-                                <span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-md">Standard Yardage</span>
+                                <h4 class="font-bold text-blue-400 text-base" id="front-tee-title">FRONT TEES (White)</h4>
+                                <span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-md" id="front-tee-yard">6,510 Yds</span>
                             </div>
                             <p class="text-xs text-slate-400">Played consistently across all 12 holes for designated front-tee teams.</p>
                         </div>
                         <div class="bg-slate-800/50 border border-amber-500/30 rounded-xl p-5">
                             <div class="flex items-center justify-between mb-2">
-                                <h4 class="font-bold text-amber-400 text-base">BACK TEES</h4>
-                                <span class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded-md">Championship Yardage</span>
+                                <h4 class="font-bold text-amber-400 text-base" id="back-tee-title">BACK TEES (Black)</h4>
+                                <span class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded-md" id="back-tee-yard">6,693 Yds</span>
                             </div>
                             <p class="text-xs text-slate-400">Played consistently across all 12 holes for designated back-tee teams.</p>
                         </div>
@@ -204,8 +203,8 @@
         <section id="sec-results" class="hidden space-y-8">
             <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 id="results-title-header" class="text-2xl font-bold text-white">Week 4 Results & Segment Breakdown</h2>
-                    <p id="results-subtitle" class="text-sm text-slate-400 mt-1">Course: Pebble Beach Golf Links (Par 48)</p>
+                    <h2 id="results-title-header" class="text-2xl font-bold text-white">Week 3 Results & Segment Breakdown</h2>
+                    <p id="results-subtitle" class="text-sm text-slate-400 mt-1">Course: Evian Resort Golf Club (Par 48)</p>
                 </div>
                 <button onclick="openAdminModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
                     <i class="fa-solid fa-pen-to-square"></i> Enter Match Scores
@@ -258,11 +257,11 @@
         <section id="sec-archive" class="hidden space-y-8">
             <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
                 <h2 class="text-2xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> Course Archive
+                    <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> Course Archive & Tee Yardages
                 </h2>
-                <p class="text-sm text-slate-400 mt-1">Complete archive of 12-hole scramble courses played this season.</p>
+                <p class="text-sm text-slate-400 mt-1">Complete archive of 12-hole scramble courses and tee configurations played this season.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="archive-grid-container"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="archive-grid-container"></div>
         </section>
 
     </main>
@@ -318,41 +317,71 @@
     </footer>
 
     <script>
-        const teamNames = [
-            "Joe/Evan", "Scotty/Dan", "Nolan/Jay", "Nate/Brian", "Sully Bros",
-            "Lou/Wayne", "Thane/Beech", "Jake/Clark", "Alex/Ross", "Frosty/Jano",
-            "Connor/Kevin", "Jesse/Nuno", "Mason/Nothe", "Nate/Josh", "Kade/Zach",
-            "James/Shawn", "Liam/Zach", "Phil/Ant", "Pizza/Andrew", "Syd/Keith"
-        ];
+        const teamPointsMap = {
+            "Joe/Evan": 15,
+            "Scotty/Dan": 11,
+            "Nolan/Jay": 10,
+            "Nate/Brian": 8,
+            "Sully Bros": 8,
+            "Lou/Wayne": 6,
+            "Thane/Beech": 6,
+            "Jake/Clark": 6,
+            "Alex/Ross": 6,
+            "Frosty/Jano": 6,
+            "Connor/Kevin": 6,
+            "Jesse/Nuno": 6,
+            "Mason/Nothe": 6,
+            "Nate/Josh": 5,
+            "Kade/Zach": 4,
+            "James/Shawn": 4,
+            "Liam/Zach": 4,
+            "Phil/Ant": 4,
+            "Pizza/Andrew": 2,
+            "Syd/Keith": 2
+        };
 
-        const defaultStandings = teamNames.map((name, idx) => ({
+        const teamNames = Object.keys(teamPointsMap);
+
+        const defaultStandings = teamNames.map((name) => ({
             name: name,
             rounds: 3,
-            segWins: Math.floor(Math.random() * 5),
-            pts: 12 + Math.floor(Math.random() * 15)
+            segWins: Math.floor(teamPointsMap[name] / 2),
+            pts: teamPointsMap[name]
         })).sort((a,b) => b.pts - a.pts);
 
         let globalStandings = JSON.parse(localStorage.getItem('simGolfStandings')) || defaultStandings;
 
         const defaultLeagueData = {
-            4: {
-                weekNum: 4, status: "Completed Match", badgeText: "WEEK 4 RESULTS",
-                courseName: "Pebble Beach Golf Links", location: "Monterey Peninsula, California", par: 48,
+            3: {
+                weekNum: 3, status: "Completed Match", badgeText: "WEEK 3",
+                courseName: "Evian Resort Golf Club - Champions Course", location: "Evian-les-Bains, France", par: 48,
+                frontTeeName: "White Tees", frontYard: "6,510 Yds", backTeeName: "Black Tees", backYard: "6,693 Yds",
                 skinsPot: "$200.00",
                 results: teamNames.map(name => ({
                     team: name,
                     scores: [4,4,3,4, 4,3,4,4, 4,3,4,3],
-                    seg1: 15, seg2: 15, seg3: 14, total: 44, pts: 6
+                    seg1: 15, seg2: 15, seg3: 14, total: 44, pts: teamPointsMap[name]
                 })),
                 skins: []
             },
-            3: { weekNum: 3, status: "Completed", badgeText: "WEEK 3", courseName: "Augusta National", location: "Georgia", par: 48, skinsPot: "$200.00", results: [], skins: [] },
-            2: { weekNum: 2, status: "Completed", badgeText: "WEEK 2", courseName: "TPC Sawgrass", location: "Florida", par: 48, skinsPot: "$200.00", results: [], skins: [] },
-            1: { weekNum: 1, status: "Completed", badgeText: "WEEK 1", courseName: "Whistler Golf Club", location: "Canada", par: 48, skinsPot: "$200.00", results: [], skins: [] }
+            2: {
+                weekNum: 2, status: "Completed", badgeText: "WEEK 2",
+                courseName: "Augusta Municipal (The Patch)", location: "Augusta, Georgia", par: 48,
+                frontTeeName: "White Tees", frontYard: "6,185 Yds", backTeeName: "Black Tees", backYard: "6,650 Yds",
+                skinsPot: "$200.00",
+                results: [], skins: []
+            },
+            1: {
+                weekNum: 1, status: "Completed", badgeText: "WEEK 1",
+                courseName: "Bayou Oaks South", location: "New Orleans, Louisiana", par: 48,
+                frontTeeName: "White Tees", frontYard: "6,103 Yds", backTeeName: "Blue Tees", backYard: "6,640 Yds",
+                skinsPot: "$200.00",
+                results: [], skins: []
+            }
         };
 
         let leagueData = JSON.parse(localStorage.getItem('simGolfLeagueData')) || defaultLeagueData;
-        let currentActiveWeek = 4;
+        let currentActiveWeek = 3;
 
         function switchTab(tabId) {
             ['overview', 'standings', 'results', 'skins', 'archive'].forEach(t => {
@@ -374,7 +403,6 @@
         }
 
         function renderStandings() {
-            // Automatically sort standings with highest points at top
             globalStandings.sort((a,b) => b.pts - a.pts);
             let html = '';
             globalStandings.forEach((st, idx) => {
@@ -393,10 +421,9 @@
 
         function renderArchive() {
             const archive = [
-                { week: 4, course: "Pebble Beach Golf Links", winner: "Joe/Evan (42 / -6)" },
-                { week: 3, course: "Augusta National Golf Club", winner: "Scotty/Dan (41 / -7)" },
-                { week: 2, course: "TPC Sawgrass Stadium", winner: "Sully Bros (40 / -8)" },
-                { week: 1, course: "Whistler Golf Club", winner: "Nolan/Jay (41 / -7)" }
+                { week: 3, course: "Evian Resort Golf Club", location: "Evian-les-Bains, France", frontTee: "White (6,510 Yds)", backTee: "Black (6,693 Yds)" },
+                { week: 2, course: "Augusta Municipal (The Patch)", location: "Augusta, Georgia", frontTee: "White (6,185 Yds)", backTee: "Black (6,650 Yds)" },
+                { week: 1, course: "Bayou Oaks South", location: "New Orleans, LA", frontTee: "White (6,103 Yds)", backTee: "Blue (6,640 Yds)" }
             ];
             let html = '';
             archive.forEach(aw => {
@@ -405,8 +432,12 @@
                         <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
                             <span class="bg-cyan-500/10 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-500/20">WEEK ${aw.week} MATCH</span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2">${aw.course}</h3>
-                        <div class="text-xs pt-2 border-t border-slate-800 flex justify-between items-center"><span class="text-slate-400">Winner:</span><span class="font-bold text-emerald-400">${aw.winner}</span></div>
+                        <h3 class="text-lg font-bold text-white mb-1">${aw.course}</h3>
+                        <p class="text-xs text-slate-400 mb-4">${aw.location}</p>
+                        <div class="space-y-2 text-xs text-slate-300">
+                            <div class="flex justify-between bg-slate-800/50 p-2 rounded"><span class="text-slate-400">Front Tees:</span><span class="font-semibold text-blue-400">${aw.frontTee}</span></div>
+                            <div class="flex justify-between bg-slate-800/50 p-2 rounded"><span class="text-slate-400">Back Tees:</span><span class="font-semibold text-amber-400">${aw.backTee}</span></div>
+                        </div>
                     </div>
                 `;
             });
@@ -420,8 +451,14 @@
 
             document.getElementById('overview-badge-status').innerText = data.badgeText;
             document.getElementById('overview-course-name').innerText = data.courseName;
-            document.getElementById('overview-location').innerHTML = `<i class="fa-solid fa-location-dot text-red-400"></i> ${data.location}`;
+            document.getElementById('overview-location').innerHTML = `<i class="fa-solid fa-location-dot text-red-400"></i> ${data.location} • Week ${currentActiveWeek} Match`;
             document.getElementById('overview-skins-pot').innerText = data.skinsPot;
+            
+            document.getElementById('front-tee-title').innerText = `FRONT TEES (${data.frontTeeName})`;
+            document.getElementById('front-tee-yard').innerText = data.frontYard;
+            document.getElementById('back-tee-title').innerText = `BACK TEES (${data.backTeeName})`;
+            document.getElementById('back-tee-yard').innerText = data.backYard;
+            document.getElementById('overview-tee-desc').innerText = `Front Tees (${data.frontTeeName}): ${data.frontYard} | Back Tees (${data.backTeeName}): ${data.backYard}`;
 
             if (data.results && data.results.length > 0) {
                 const overallSorted = [...data.results].sort((a,b) => a.total - b.total);
@@ -485,14 +522,12 @@
                 weekData.results.push({ team: teamName, scores, seg1: s1, seg2: s2, seg3: s3, total: totalScore, pts: 6 });
             }
 
-            // Sync and update standings automatically
             let standingEntry = globalStandings.find(st => st.name === teamName);
             if (standingEntry) {
-                standingEntry.pts += 2; // Adds points for updated match
+                standingEntry.pts += 2;
                 standingEntry.segWins += 1;
             }
 
-            // Save to localStorage for persistence
             localStorage.setItem('simGolfLeagueData', JSON.stringify(leagueData));
             localStorage.setItem('simGolfStandings', JSON.stringify(globalStandings));
 
@@ -506,7 +541,7 @@
             populateTeamDropdown();
             renderStandings();
             renderArchive();
-            changeWeek(4);
+            changeWeek(3);
         };
     </script>
 </body>
