@@ -179,7 +179,7 @@
                     <h2 class="text-2xl font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-trophy text-yellow-500"></i> Official League Standings
                     </h2>
-                    <p class="text-sm text-slate-400 mt-1">All 20 teams have played 3 rounds. Ranked by Total Points.</p>
+                    <p class="text-sm text-slate-400 mt-1">Automatically sorted by Total Points (highest at top).</p>
                 </div>
             </div>
             <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
@@ -306,7 +306,7 @@
 
                 <div class="pt-4 border-t border-slate-800 flex justify-end gap-3">
                     <button type="button" onclick="closeAdminModal()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition">Cancel</button>
-                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Save & Calculate</button>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Save & Sync Standings</button>
                 </div>
             </form>
         </div>
@@ -325,9 +325,7 @@
             "James/Shawn", "Liam/Zach", "Phil/Ant", "Pizza/Andrew", "Syd/Keith"
         ];
 
-        // Generate initial standings with 3 rounds played and random initial segment wins/points
         const defaultStandings = teamNames.map((name, idx) => ({
-            rank: idx + 1,
             name: name,
             rounds: 3,
             segWins: Math.floor(Math.random() * 5),
@@ -376,6 +374,7 @@
         }
 
         function renderStandings() {
+            // Automatically sort standings with highest points at top
             globalStandings.sort((a,b) => b.pts - a.pts);
             let html = '';
             globalStandings.forEach((st, idx) => {
@@ -486,10 +485,21 @@
                 weekData.results.push({ team: teamName, scores, seg1: s1, seg2: s2, seg3: s3, total: totalScore, pts: 6 });
             }
 
+            // Sync and update standings automatically
+            let standingEntry = globalStandings.find(st => st.name === teamName);
+            if (standingEntry) {
+                standingEntry.pts += 2; // Adds points for updated match
+                standingEntry.segWins += 1;
+            }
+
+            // Save to localStorage for persistence
             localStorage.setItem('simGolfLeagueData', JSON.stringify(leagueData));
+            localStorage.setItem('simGolfStandings', JSON.stringify(globalStandings));
+
             changeWeek(currentActiveWeek);
+            renderStandings();
             closeAdminModal();
-            alert(`Scores saved successfully for ${teamName}!`);
+            alert(`Scores saved and standings automatically synced for ${teamName}!`);
         }
 
         window.onload = function() {
