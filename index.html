@@ -59,7 +59,6 @@
                         <i class="fa-solid fa-lock"></i> Admin Entry
                     </button>
                     <select id="weekSelect" onchange="changeWeek(this.value)" class="bg-slate-800 text-emerald-400 border border-slate-700 rounded-lg px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 transition cursor-pointer">
-                        <option value="5">Week 5 (Upcoming)</option>
                         <option value="4" selected>Week 4 (Completed)</option>
                         <option value="3">Week 3</option>
                         <option value="2">Week 2</option>
@@ -73,7 +72,7 @@
                 <button onclick="switchTab('standings')" id="tab-standings" class="py-3 px-1 text-slate-400 hover:text-white transition whitespace-nowrap"><i class="fa-solid fa-trophy mr-2 text-yellow-500"></i>Standings</button>
                 <button onclick="switchTab('results')" id="tab-results" class="py-3 px-1 text-slate-400 hover:text-white transition whitespace-nowrap"><i class="fa-solid fa-square-poll-vertical mr-2 text-emerald-400"></i>Week Results & Segments</button>
                 <button onclick="switchTab('skins')" id="tab-skins" class="py-3 px-1 text-slate-400 hover:text-white transition whitespace-nowrap"><i class="fa-solid fa-coins mr-2 text-amber-400"></i>Weekly Skins</button>
-                <button onclick="switchTab('archive')" id="tab-archive" class="py-3 px-1 text-slate-400 hover:text-white transition whitespace-nowrap"><i class="fa-solid fa-clock-rotate-left mr-2 text-cyan-400"></i>Course Archive & Tees</button>
+                <button onclick="switchTab('archive')" id="tab-archive" class="py-3 px-1 text-slate-400 hover:text-white transition whitespace-nowrap"><i class="fa-solid fa-clock-rotate-left mr-2 text-cyan-400"></i>Course Archive</button>
             </nav>
         </div>
     </header>
@@ -107,12 +106,12 @@
                         <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-center">
                             <span class="text-xs text-slate-400 block font-medium">Format</span>
                             <span class="text-lg font-bold text-white">2-Man Scramble</span>
-                            <span class="text-[10px] text-slate-500 block">Gross & Net Segments</span>
+                            <span class="text-[10px] text-slate-500 block">Consistent Tee Assignment</span>
                         </div>
                         <div class="col-span-2 sm:col-span-1 bg-slate-800/80 border border-slate-700 rounded-xl p-3 text-center">
                             <span class="text-xs text-slate-400 block font-medium">Weekly Skins Pot</span>
-                            <span id="overview-skins-pot" class="text-lg font-bold text-amber-400">$120.00</span>
-                            <span class="text-[10px] text-slate-500 block">$10 per player entry</span>
+                            <span id="overview-skins-pot" class="text-lg font-bold text-amber-400">$200.00</span>
+                            <span class="text-[10px] text-slate-500 block">All 20 Teams Active</span>
                         </div>
                     </div>
                 </div>
@@ -123,38 +122,27 @@
                     <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                         <h3 class="text-lg font-bold text-white flex items-center gap-2">
                             <i class="fa-solid fa-layer-group text-emerald-400"></i>
-                            Official Tee Assignments (12-Hole Setup)
+                            Tee Box Configurations (Front & Back Tees)
                         </h3>
-                        <span class="text-xs bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700">Strictly Enforced</span>
+                        <span class="text-xs bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700">12-Hole Consistency</span>
                     </div>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                        Teams play from their assigned tee box (Front or Back tees) consistently across all 12 holes of the match.
+                    </p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-slate-800/50 border border-blue-500/30 rounded-xl p-5">
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-4 h-4 rounded-full bg-blue-500 inline-block shadow"></span>
-                                    <h4 class="font-bold text-blue-400 text-base">FRONT TEE (Holes 1–6)</h4>
-                                </div>
-                                <span id="front-tee-name" class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-md">BLUE TEES</span>
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-blue-400 text-base">FRONT TEES</h4>
+                                <span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-md">Standard Yardage</span>
                             </div>
-                            <p class="text-xs text-slate-400 mb-4">Players tee off from the Front designated tee for the first half of the match (Holes 1 through 6).</p>
-                            <div class="flex justify-between items-center text-sm border-t border-slate-700/50 pt-3">
-                                <span class="text-slate-400">Front Yardage (6 Holes):</span>
-                                <span id="front-tee-yardage" class="font-mono font-bold text-white">3,120 Yds</span>
-                            </div>
+                            <p class="text-xs text-slate-400">Played consistently across all 12 holes for designated front-tee teams.</p>
                         </div>
                         <div class="bg-slate-800/50 border border-amber-500/30 rounded-xl p-5">
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-4 h-4 rounded-full bg-slate-950 border border-amber-500 inline-block shadow"></span>
-                                    <h4 class="font-bold text-amber-400 text-base">BACK TEE (Holes 7–12)</h4>
-                                </div>
-                                <span id="back-tee-name" class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded-md">BLACK / TIPS</span>
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-amber-400 text-base">BACK TEES</h4>
+                                <span class="bg-amber-500/20 text-amber-300 text-xs font-semibold px-2.5 py-1 rounded-md">Championship Yardage</span>
                             </div>
-                            <p class="text-xs text-slate-400 mb-4">Players shift back to the Championship Tee for the back stretch of the match (Holes 7 through 12).</p>
-                            <div class="flex justify-between items-center text-sm border-t border-slate-700/50 pt-3">
-                                <span class="text-slate-400">Back Yardage (6 Holes):</span>
-                                <span id="back-tee-yardage" class="font-mono font-bold text-white">3,480 Yds</span>
-                            </div>
+                            <p class="text-xs text-slate-400">Played consistently across all 12 holes for designated back-tee teams.</p>
                         </div>
                     </div>
                 </div>
@@ -163,24 +151,20 @@
                     <div>
                         <h3 class="text-lg font-bold text-white mb-4 pb-3 border-b border-slate-800 flex items-center gap-2">
                             <i class="fa-solid fa-sliders text-cyan-400"></i>
-                            Simulator Preset Rules
+                            Simulator Rules
                         </h3>
                         <ul class="space-y-3.5 text-sm">
                             <li class="flex justify-between items-center bg-slate-800/50 p-2.5 rounded-lg border border-slate-800">
-                                <span class="text-slate-400"><i class="fa-solid fa-ruler text-emerald-400 text-xs mr-2"></i> Gimme Distance</span>
-                                <span id="rule-gimme" class="font-semibold text-white">8 Feet</span>
+                                <span class="text-slate-400">Gimme Distance</span>
+                                <span class="font-semibold text-white">8 Feet</span>
                             </li>
                             <li class="flex justify-between items-center bg-slate-800/50 p-2.5 rounded-lg border border-slate-800">
-                                <span class="text-slate-400"><i class="fa-solid fa-wind text-cyan-400 text-xs mr-2"></i> Wind Conditions</span>
-                                <span id="rule-wind" class="font-semibold text-white">Calm</span>
+                                <span class="text-slate-400">Wind Conditions</span>
+                                <span class="font-semibold text-white">Calm</span>
                             </li>
                             <li class="flex justify-between items-center bg-slate-800/50 p-2.5 rounded-lg border border-slate-800">
-                                <span class="text-slate-400"><i class="fa-solid fa-circle-dot text-emerald-400 text-xs mr-2"></i> Green Speed</span>
-                                <span id="rule-greens" class="font-semibold text-white">Fast (Stimp 10.5)</span>
-                            </li>
-                            <li class="flex justify-between items-center bg-slate-800/50 p-2.5 rounded-lg border border-slate-800">
-                                <span class="text-slate-400"><i class="fa-solid fa-location-crosshairs text-red-400 text-xs mr-2"></i> Pin Difficulty</span>
-                                <span id="rule-pins" class="font-semibold text-white">Medium</span>
+                                <span class="text-slate-400">Green Speed</span>
+                                <span class="font-semibold text-white">Fast (Stimp 10.5)</span>
                             </li>
                         </ul>
                     </div>
@@ -195,7 +179,7 @@
                     <h2 class="text-2xl font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-trophy text-yellow-500"></i> Official League Standings
                     </h2>
-                    <p class="text-sm text-slate-400 mt-1">Updated through Week 4. Points awarded via 4-hole segment wins (2 pts each) + overall low round (2 pts).</p>
+                    <p class="text-sm text-slate-400 mt-1">All 20 teams have played 3 rounds. Ranked by Total Points.</p>
                 </div>
             </div>
             <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
@@ -204,11 +188,9 @@
                         <thead class="bg-slate-950 text-xs uppercase text-slate-400 border-b border-slate-800 font-semibold tracking-wider">
                             <tr>
                                 <th class="py-4 px-4 text-center">Rank</th>
-                                <th class="py-4 px-6">Team & Players</th>
-                                <th class="py-4 px-4 text-center">Matches</th>
-                                <th class="py-4 px-4 text-center">Record (W-L-T)</th>
-                                <th class="py-4 px-4 text-center">Seg Wins</th>
-                                <th class="py-4 px-4 text-center">Avg Gross</th>
+                                <th class="py-4 px-6">Team</th>
+                                <th class="py-4 px-4 text-center">Rounds Played</th>
+                                <th class="py-4 px-4 text-center">Segment Wins</th>
                                 <th class="py-4 px-4 text-center bg-slate-800/60 text-white font-bold">Total Points</th>
                             </tr>
                         </thead>
@@ -226,69 +208,25 @@
                     <p id="results-subtitle" class="text-sm text-slate-400 mt-1">Course: Pebble Beach Golf Links (Par 48)</p>
                 </div>
                 <button onclick="openAdminModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
-                    <i class="fa-solid fa-pen-to-square"></i> Enter Hole-by-Hole Scores
+                    <i class="fa-solid fa-pen-to-square"></i> Enter Match Scores
                 </button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 relative overflow-hidden shadow-lg">
-                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-bl-lg uppercase">Holes 1–4</div>
-                    <span class="text-xs font-semibold text-slate-400 block mb-1">SEGMENT 1</span>
-                    <h4 id="seg1-winner-team" class="font-bold text-lg text-white">Pin Seekers</h4>
-                    <p id="seg1-winner-players" class="text-xs text-slate-400 mb-3">M. Miller / J. Reed</p>
-                    <div class="flex justify-between items-center text-xs border-t border-slate-800 pt-2">
-                        <span class="text-slate-400">Winning Score:</span>
-                        <span id="seg1-winner-score" class="font-bold text-emerald-400 text-sm font-mono">-3 (13)</span>
-                    </div>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 relative overflow-hidden shadow-lg">
-                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-bl-lg uppercase">Holes 5–8</div>
-                    <span class="text-xs font-semibold text-slate-400 block mb-1">SEGMENT 2</span>
-                    <h4 id="seg2-winner-team" class="font-bold text-lg text-white">Fairway To Heaven</h4>
-                    <p id="seg2-winner-players" class="text-xs text-slate-400 mb-3">D. Vance / T. Scott</p>
-                    <div class="flex justify-between items-center text-xs border-t border-slate-800 pt-2">
-                        <span class="text-slate-400">Winning Score:</span>
-                        <span id="seg2-winner-score" class="font-bold text-emerald-400 text-sm font-mono">-4 (12)</span>
-                    </div>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 relative overflow-hidden shadow-lg">
-                    <div class="absolute top-0 right-0 bg-amber-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-bl-lg uppercase">Holes 9–12</div>
-                    <span class="text-xs font-semibold text-slate-400 block mb-1">SEGMENT 3</span>
-                    <h4 id="seg3-winner-team" class="font-bold text-lg text-white">Bogie Boys</h4>
-                    <p id="seg3-winner-players" class="text-xs text-slate-400 mb-3">R. Gable / B. Hayes</p>
-                    <div class="flex justify-between items-center text-xs border-t border-slate-800 pt-2">
-                        <span class="text-slate-400">Winning Score:</span>
-                        <span id="seg3-winner-score" class="font-bold text-emerald-400 text-sm font-mono">-2 (14)</span>
-                    </div>
-                </div>
-                <div class="bg-gradient-to-br from-slate-900 to-emerald-950 border border-emerald-500/40 rounded-xl p-4 relative overflow-hidden shadow-lg">
-                    <div class="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[10px] font-extrabold px-3 py-1 rounded-bl-lg uppercase">Low Overall</div>
-                    <span class="text-xs font-semibold text-emerald-400 block mb-1">MATCH WINNER</span>
-                    <h4 id="overall-winner-team" class="font-bold text-lg text-white">Pin Seekers</h4>
-                    <p id="overall-winner-players" class="text-xs text-slate-400 mb-3">M. Miller / J. Reed</p>
-                    <div class="flex justify-between items-center text-xs border-t border-slate-800 pt-2">
-                        <span class="text-slate-400">12-Hole Score:</span>
-                        <span id="overall-winner-score" class="font-bold text-emerald-400 text-sm font-mono">40 (-8)</span>
-                    </div>
-                </div>
             </div>
 
             <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
                 <div class="p-5 border-b border-slate-800 flex items-center justify-between">
-                    <h3 class="font-bold text-white text-base">Detailed Match Leaderboard & Segment Scores</h3>
+                    <h3 class="font-bold text-white text-base">Full Field Leaderboard</h3>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm text-slate-300">
                         <thead class="bg-slate-950 text-xs uppercase text-slate-400 border-b border-slate-800 font-semibold">
                             <tr>
                                 <th class="py-3.5 px-4 text-center">Pos</th>
-                                <th class="py-3.5 px-6">Team Name</th>
+                                <th class="py-3.5 px-6">Team</th>
                                 <th class="py-3.5 px-4 text-center bg-blue-950/30 text-blue-400">Seg 1 (1–4)</th>
                                 <th class="py-3.5 px-4 text-center bg-purple-950/30 text-purple-400">Seg 2 (5–8)</th>
                                 <th class="py-3.5 px-4 text-center bg-amber-950/30 text-amber-400">Seg 3 (9–12)</th>
                                 <th class="py-3.5 px-4 text-center">Gross Total</th>
-                                <th class="py-3.5 px-4 text-center">To Par</th>
-                                <th class="py-3.5 px-4 text-center text-emerald-400 font-bold">Pts Earned</th>
+                                <th class="py-3.5 px-4 text-center text-emerald-400 font-bold">Total Pts</th>
                             </tr>
                         </thead>
                         <tbody id="match-leaderboard-body" class="divide-y divide-slate-800"></tbody>
@@ -304,65 +242,61 @@
                     <h2 class="text-2xl font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-coins text-amber-400"></i> Weekly Skins Breakdown
                     </h2>
-                    <p id="skins-subtitle-text" class="text-sm text-slate-400 mt-1">Week 4 • Automatically Calculated Skins</p>
+                    <p id="skins-subtitle-text" class="text-sm text-slate-400 mt-1">Automatically Calculated Skins</p>
                 </div>
                 <div class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl flex items-center space-x-4">
                     <div>
                         <span class="text-[10px] text-slate-400 block uppercase font-bold">Total Pot</span>
-                        <span id="skins-total-pot" class="text-lg font-extrabold text-amber-400">$120.00</span>
+                        <span id="skins-total-pot" class="text-lg font-extrabold text-amber-400">$200.00</span>
                     </div>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="skins-card-container"></div>
         </section>
 
-        <!-- TAB 5: COURSE ARCHIVE & TEES -->
+        <!-- TAB 5: COURSE ARCHIVE -->
         <section id="sec-archive" class="hidden space-y-8">
             <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
                 <h2 class="text-2xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> Course & Tee Box History
+                    <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> Course Archive
                 </h2>
-                <p class="text-sm text-slate-400 mt-1">Complete archive of all 12-hole scramble courses and tee box configurations played this season.</p>
+                <p class="text-sm text-slate-400 mt-1">Complete archive of 12-hole scramble courses played this season.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="archive-grid-container"></div>
         </section>
 
     </main>
 
-    <!-- ADMIN 12-HOLE SCORE & SKINS ENTRY MODAL -->
+    <!-- ADMIN MODAL -->
     <div id="adminModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative">
             <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <i class="fa-solid fa-shield-halved text-amber-400"></i> Commissioner Hole-by-Hole Score Entry
+                <i class="fa-solid fa-shield-halved text-amber-400"></i> Enter Hole-by-Hole Scores
             </h3>
-            <p class="text-xs text-slate-400 mb-6">Enter scores for all 12 holes. Segments and skins will be generated automatically.</p>
+            <p class="text-xs text-slate-400 mb-6">Select a team and enter scores for all 12 holes.</p>
 
             <form id="adminScoreForm" onsubmit="handleAdminSubmit(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Select Team</label>
                     <select id="adminTeamSelect" class="w-full bg-slate-800 text-white border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-                        <option value="Joe/Evan">Joe/Evan</option>
-                        <option value="Fairway To Heaven">Fairway To Heaven</option>
-                        <option value="Bogie Boys">Bogie Boys</option>
-                        <option value="Par Tee Animals">Par Tee Animals</option>
-                        <option value="Slice & Dice">Slice & Dice</option>
+                        <!-- Populated dynamically -->
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-2">Hole-by-Hole Scores (H1 – H12)</label>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-2">H1 – H12 Scores</label>
                     <div class="grid grid-cols-6 gap-2">
-                        <div><label class="text-[10px] text-slate-400">H1</label><input type="number" id="h1" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="3"></div>
+                        <div><label class="text-[10px] text-slate-400">H1</label><input type="number" id="h1" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
                         <div><label class="text-[10px] text-slate-400">H2</label><input type="number" id="h2" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
-                        <div><label class="text-[10px] text-slate-400">H3</label><input type="number" id="h3" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="2"></div>
+                        <div><label class="text-[10px] text-slate-400">H3</label><input type="number" id="h3" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="3"></div>
                         <div><label class="text-[10px] text-slate-400">H4</label><input type="number" id="h4" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
                         <div><label class="text-[10px] text-slate-400">H5</label><input type="number" id="h5" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
                         <div><label class="text-[10px] text-slate-400">H6</label><input type="number" id="h6" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="3"></div>
                         <div><label class="text-[10px] text-slate-400">H7</label><input type="number" id="h7" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
-                        <div><label class="text-[10px] text-slate-400">H8</label><input type="number" id="h8" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="2"></div>
+                        <div><label class="text-[10px] text-slate-400">H8</label><input type="number" id="h8" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
                         <div><label class="text-[10px] text-slate-400">H9</label><input type="number" id="h9" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
                         <div><label class="text-[10px] text-slate-400">H10</label><input type="number" id="h10" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="3"></div>
                         <div><label class="text-[10px] text-slate-400">H11</label><input type="number" id="h11" required class="w-full bg-slate-800 text-white border border-slate-700 rounded p-1.5 text-center text-sm font-mono" value="4"></div>
@@ -372,7 +306,7 @@
 
                 <div class="pt-4 border-t border-slate-800 flex justify-end gap-3">
                     <button type="button" onclick="closeAdminModal()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition">Cancel</button>
-                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Save & Generate Skins</button>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-sm font-semibold transition">Save & Calculate</button>
                 </div>
             </form>
         </div>
@@ -383,48 +317,41 @@
         <p>© 2026 Sim Golf Scramble League • Built for Indoor Simulator Golf Competitions</p>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
+        const teamNames = [
+            "Joe/Evan", "Scotty/Dan", "Nolan/Jay", "Nate/Brian", "Sully Bros",
+            "Lou/Wayne", "Thane/Beech", "Jake/Clark", "Alex/Ross", "Frosty/Jano",
+            "Connor/Kevin", "Jesse/Nuno", "Mason/Nothe", "Nate/Josh", "Kade/Zach",
+            "James/Shawn", "Liam/Zach", "Phil/Ant", "Pizza/Andrew", "Syd/Keith"
+        ];
+
+        // Generate initial standings with 3 rounds played and random initial segment wins/points
+        const defaultStandings = teamNames.map((name, idx) => ({
+            rank: idx + 1,
+            name: name,
+            rounds: 3,
+            segWins: Math.floor(Math.random() * 5),
+            pts: 12 + Math.floor(Math.random() * 15)
+        })).sort((a,b) => b.pts - a.pts);
+
+        let globalStandings = JSON.parse(localStorage.getItem('simGolfStandings')) || defaultStandings;
+
         const defaultLeagueData = {
-            5: { weekNum: 5, status: "Upcoming Match", badgeText: "NEXT UP • WEEK 5", courseName: "St Andrews Links (Old Course)", location: "Fife, Scotland", par: 48, frontTeeName: "White Tees", frontTeeYardage: "3,150 Yds", backTeeName: "Yellow / Championship", backTeeYardage: "3,520 Yds", gimme: "8 Feet", wind: "Moderate", greens: "Medium-Fast", pins: "Hard", skinsPot: "$130.00", results: [], skins: [] },
             4: {
-                weekNum: 4, status: "Completed Match", badgeText: "WEEK 4 RESULTS", courseName: "Pebble Beach Golf Links", location: "Monterey Peninsula, California", par: 48, frontTeeName: "Blue Tees", frontTeeYardage: "3,120 Yds", backTeeName: "Black / Tips", backTeeYardage: "3,480 Yds", gimme: "8 Feet", wind: "Calm", greens: "Fast", pins: "Medium", skinsPot: "$120.00",
-                results: [
-                    { pos: 1, team: "Pin Seekers", players: "M. Miller / J. Reed", scores: [3,4,2,4, 4,3,4,2, 4,3,4,3], seg1: 13, seg2: 13, seg3: 14, total: 40, toPar: -8, pts: 8 },
-                    { pos: 2, team: "Fairway To Heaven", players: "D. Vance / T. Scott", scores: [4,3,3,4, 3,3,3,3, 4,4,4,3], seg1: 14, seg2: 12, seg3: 15, total: 41, toPar: -7, pts: 6 },
-                    { pos: 3, team: "Bogie Boys", players: "R. Gable / B. Hayes", scores: [4,4,3,4, 4,3,4,3, 4,3,4,3], seg1: 15, seg2: 14, seg3: 14, total: 43, toPar: -5, pts: 4 }
-                ],
+                weekNum: 4, status: "Completed Match", badgeText: "WEEK 4 RESULTS",
+                courseName: "Pebble Beach Golf Links", location: "Monterey Peninsula, California", par: 48,
+                skinsPot: "$200.00",
+                results: teamNames.map(name => ({
+                    team: name,
+                    scores: [4,4,3,4, 4,3,4,4, 4,3,4,3],
+                    seg1: 15, seg2: 15, seg3: 14, total: 44, pts: 6
+                })),
                 skins: []
-            }
+            },
+            3: { weekNum: 3, status: "Completed", badgeText: "WEEK 3", courseName: "Augusta National", location: "Georgia", par: 48, skinsPot: "$200.00", results: [], skins: [] },
+            2: { weekNum: 2, status: "Completed", badgeText: "WEEK 2", courseName: "TPC Sawgrass", location: "Florida", par: 48, skinsPot: "$200.00", results: [], skins: [] },
+            1: { weekNum: 1, status: "Completed", badgeText: "WEEK 1", courseName: "Whistler Golf Club", location: "Canada", par: 48, skinsPot: "$200.00", results: [], skins: [] }
         };
-
-        const globalStandings = [
-            { rank: 1, name: "Joe/Evan", Rounds: 3, record: "3-0-1", segWins: 7, avgGross: 41.2, pts: 15 },
-            { rank: 2, name: "Scotty/Dan", Rounds: 3, record: "3-1-0", segWins: 6, avgGross: 41.8, pts: 11 },
-            { rank: 3, name: "Nolan/Jay", Rounds: 3, record: "2-1-1", segWins: 5, avgGross: 42.5, pts: 10 },
-            { rank: 4, name: "Nate/Brian", Rounds: 3, record: "1-2-1", segWins: 4, avgGross: 43.1, pts: 8 },
-            { rank: 5, name: "Sully Bros", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 8 },
-            { rank: 6, name: "Lou/Wayne", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 7, name: "Thane/Beech", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 8, name: "Jake/Clark", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 9, name: "Alex/Ross", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 10, name: "Frost/Jano", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 11, name: "Connor/Kevin", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 12, name: "Jesse/Nuno", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 13, name: "Mason/Nothe", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 6 },
-            { rank: 14, name: "Nate/Josh", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 5 },
-            { rank: 14, name: "Kade/Zach", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 4 },
-            { rank: 14, name: "James/Shawn", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 4 },
-            { rank: 14, name: "Liam/Zach", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 4 },
-            { rank: 14, name: "Phil/Ant", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 4 },
-            { rank: 14, name: "Pizza/Andrew", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 2 },
-            { rank: 14, name: "Syd/Keith", Rounds: 3, record: "0-4-0", segWins: 1, avgGross: 45.0, pts: 2 },
-        ];
-
-        const archiveWeeks = [
-            { week: 4, course: "Pebble Beach Golf Links", frontTee: "Blue Tees", backTee: "Black / Tips", winner: "Pin Seekers (40 / -8)" },
-            { week: 3, course: "Augusta National Golf Club", frontTee: "Members Tees", backTee: "Tournament Tees", winner: "Fairway To Heaven (39 / -9)" }
-        ];
 
         let leagueData = JSON.parse(localStorage.getItem('simGolfLeagueData')) || defaultLeagueData;
         let currentActiveWeek = 4;
@@ -440,35 +367,51 @@
             document.getElementById(`tab-${tabId}`).classList.remove('text-slate-400');
         }
 
-        function calculateSkinsForWeek(weekNum) {
-            const data = leagueData[weekNum];
-            if (!data || !data.results || data.results.length === 0) return;
+        function populateTeamDropdown() {
+            const select = document.getElementById('adminTeamSelect');
+            select.innerHTML = '';
+            teamNames.forEach(name => {
+                select.innerHTML += `<option value="${name}">${name}</option>`;
+            });
+        }
 
-            let calculatedSkins = [];
-            // Check each hole 1 to 12 (index 0 to 11)
-            for (let h = 0; h < 12; h++) {
-                let holeScores = data.results.map(res => ({
-                    team: res.team,
-                    score: res.scores ? res.scores[h] : 4
-                }));
+        function renderStandings() {
+            globalStandings.sort((a,b) => b.pts - a.pts);
+            let html = '';
+            globalStandings.forEach((st, idx) => {
+                html += `
+                    <tr class="hover:bg-slate-800/40 transition">
+                        <td class="py-4 px-4 text-center font-bold text-white">#${idx + 1}</td>
+                        <td class="py-4 px-6 font-semibold text-white">${st.name}</td>
+                        <td class="py-4 px-4 text-center">${st.rounds}</td>
+                        <td class="py-4 px-4 text-center font-mono text-emerald-400 font-semibold">${st.segWins}</td>
+                        <td class="py-4 px-4 text-center font-extrabold text-white bg-slate-800/40 text-base">${st.pts}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('standings-table-body').innerHTML = html;
+        }
 
-                // Find lowest score on this hole
-                let minScore = Math.min(...holeScores.map(hs => hs.score));
-                let lowestTeams = holeScores.filter(hs => hs.score === minScore);
-
-                // If exactly ONE team has the lowest score, they win the skin!
-                if (lowestTeams.length === 1) {
-                    calculatedSkins.push({
-                        hole: h + 1,
-                        team: lowestTeams[0].team,
-                        score: minScore,
-                        par: 4,
-                        type: minScore <= 3 ? "Gross Birdie/Eagle" : "Gross Score",
-                        payout: "$40.00"
-                    });
-                }
-            }
-            data.skins = calculatedSkins;
+        function renderArchive() {
+            const archive = [
+                { week: 4, course: "Pebble Beach Golf Links", winner: "Joe/Evan (42 / -6)" },
+                { week: 3, course: "Augusta National Golf Club", winner: "Scotty/Dan (41 / -7)" },
+                { week: 2, course: "TPC Sawgrass Stadium", winner: "Sully Bros (40 / -8)" },
+                { week: 1, course: "Whistler Golf Club", winner: "Nolan/Jay (41 / -7)" }
+            ];
+            let html = '';
+            archive.forEach(aw => {
+                html += `
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+                            <span class="bg-cyan-500/10 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-500/20">WEEK ${aw.week} MATCH</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">${aw.course}</h3>
+                        <div class="text-xs pt-2 border-t border-slate-800 flex justify-between items-center"><span class="text-slate-400">Winner:</span><span class="font-bold text-emerald-400">${aw.winner}</span></div>
+                    </div>
+                `;
+            });
+            document.getElementById('archive-grid-container').innerHTML = html;
         }
 
         function changeWeek(weekVal) {
@@ -480,120 +423,25 @@
             document.getElementById('overview-course-name').innerText = data.courseName;
             document.getElementById('overview-location').innerHTML = `<i class="fa-solid fa-location-dot text-red-400"></i> ${data.location}`;
             document.getElementById('overview-skins-pot').innerText = data.skinsPot;
-            document.getElementById('front-tee-name').innerText = data.frontTeeName.toUpperCase();
-            document.getElementById('front-tee-yardage').innerText = data.frontTeeYardage;
-            document.getElementById('back-tee-name').innerText = data.backTeeName.toUpperCase();
-            document.getElementById('back-tee-yardage').innerText = data.backTeeYardage;
 
             if (data.results && data.results.length > 0) {
-                calculateSkinsForWeek(currentActiveWeek);
-
-                document.getElementById('results-title-header').innerText = `Week ${currentActiveWeek} Results & Segment Breakdown`;
-                document.getElementById('results-subtitle').innerText = `Course: ${data.courseName} (Par ${data.par})`;
-
-                const s1Sorted = [...data.results].sort((a,b) => a.seg1 - b.seg1);
-                const s2Sorted = [...data.results].sort((a,b) => a.seg2 - b.seg2);
-                const s3Sorted = [...data.results].sort((a,b) => a.seg3 - b.seg3);
                 const overallSorted = [...data.results].sort((a,b) => a.total - b.total);
-
-                document.getElementById('seg1-winner-team').innerText = s1Sorted[0].team;
-                document.getElementById('seg1-winner-players').innerText = s1Sorted[0].players;
-                document.getElementById('seg1-winner-score').innerText = `${s1Sorted[0].seg1 - 16 >= 0 ? '+' : ''}${s1Sorted[0].seg1 - 16} (${s1Sorted[0].seg1})`;
-
-                document.getElementById('seg2-winner-team').innerText = s2Sorted[0].team;
-                document.getElementById('seg2-winner-players').innerText = s2Sorted[0].players;
-                document.getElementById('seg2-winner-score').innerText = `${s2Sorted[0].seg2 - 16 >= 0 ? '+' : ''}${s2Sorted[0].seg2 - 16} (${s2Sorted[0].seg2})`;
-
-                document.getElementById('seg3-winner-team').innerText = s3Sorted[0].team;
-                document.getElementById('seg3-winner-players').innerText = s3Sorted[0].players;
-                document.getElementById('seg3-winner-score').innerText = `${s3Sorted[0].seg3 - 16 >= 0 ? '+' : ''}${s3Sorted[0].seg3 - 16} (${s3Sorted[0].seg3})`;
-
-                document.getElementById('overall-winner-team').innerText = overallSorted[0].team;
-                document.getElementById('overall-winner-players').innerText = overallSorted[0].players;
-                document.getElementById('overall-winner-score').innerText = `${overallSorted[0].total} (${overallSorted[0].toPar})`;
-
                 let lbHTML = '';
                 overallSorted.forEach((res, idx) => {
                     lbHTML += `
                         <tr class="hover:bg-slate-800/40 transition">
                             <td class="py-4 px-4 text-center font-bold text-white">#${idx + 1}</td>
-                            <td class="py-4 px-6 font-semibold text-white">${res.team}<span class="block text-xs font-normal text-slate-400">${res.players}</span></td>
+                            <td class="py-4 px-6 font-semibold text-white">${res.team}</td>
                             <td class="py-4 px-4 text-center font-mono bg-blue-950/20">${res.seg1}</td>
                             <td class="py-4 px-4 text-center font-mono bg-purple-950/20">${res.seg2}</td>
                             <td class="py-4 px-4 text-center font-mono bg-amber-950/20">${res.seg3}</td>
                             <td class="py-4 px-4 text-center font-mono font-bold text-white">${res.total}</td>
-                            <td class="py-4 px-4 text-center font-mono text-emerald-400 font-semibold">${res.toPar}</td>
                             <td class="py-4 px-4 text-center font-bold text-emerald-400">${res.pts} Pts</td>
                         </tr>
                     `;
                 });
                 document.getElementById('match-leaderboard-body').innerHTML = lbHTML;
-
-                // Render Skins Cards
-                let skinsHTML = '';
-                if (data.skins && data.skins.length > 0) {
-                    data.skins.forEach(sk => {
-                        skinsHTML += `
-                            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden shadow-lg">
-                                <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-[10px] font-extrabold px-3 py-1 rounded-bl-lg uppercase">Hole #${sk.hole}</div>
-                                <span class="text-xs font-semibold text-amber-400 block mb-1">SKIN WON (${sk.score})</span>
-                                <h4 class="font-bold text-lg text-white">${sk.team}</h4>
-                                <p class="text-xs text-slate-400 mb-4">Lowest unique score on hole #${sk.hole}</p>
-                                <div class="flex justify-between items-center text-xs border-t border-slate-800 pt-3">
-                                    <span class="text-slate-400">Payout:</span>
-                                    <span class="font-bold text-emerald-400 text-sm font-mono">${sk.payout}</span>
-                                </div>
-                            </div>
-                        `;
-                    });
-                } else {
-                    skinsHTML = `<div class="col-span-3 text-center py-8 text-slate-500 bg-slate-900 rounded-xl border border-slate-800">No skins won (all holes were tied).</div>`;
-                }
-                document.getElementById('skins-card-container').innerHTML = skinsHTML;
-
-            } else {
-                document.getElementById('results-title-header').innerText = `Week ${currentActiveWeek} Results (Upcoming)`;
-                document.getElementById('results-subtitle').innerText = `Match has not been played yet.`;
-                document.getElementById('match-leaderboard-body').innerHTML = `<tr><td colspan="8" class="text-center py-8 text-slate-500">No scores recorded for this week yet. Click 'Enter Hole-by-Hole Scores' to input data.</td></tr>`;
             }
-        }
-
-        function renderStandings() {
-            let html = '';
-            globalStandings.forEach(st => {
-                html += `
-                    <tr class="hover:bg-slate-800/40 transition">
-                        <td class="py-4 px-4 text-center font-bold text-white">#${st.rank}</td>
-                        <td class="py-4 px-6 font-semibold text-white">${st.name}<span class="block text-xs font-normal text-slate-400">${st.players}</span></td>
-                        <td class="py-4 px-4 text-center">${st.matches}</td>
-                        <td class="py-4 px-4 text-center font-mono text-slate-300">${st.record}</td>
-                        <td class="py-4 px-4 text-center font-mono text-emerald-400 font-semibold">${st.segWins}</td>
-                        <td class="py-4 px-4 text-center font-mono">${st.avgGross}</td>
-                        <td class="py-4 px-4 text-center font-extrabold text-white bg-slate-800/40 text-base">${st.pts}</td>
-                    </tr>
-                `;
-            });
-            document.getElementById('standings-table-body').innerHTML = html;
-        }
-
-        function renderArchive() {
-            let html = '';
-            archiveWeeks.forEach(aw => {
-                html += `
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
-                            <span class="bg-cyan-500/10 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-500/20">WEEK ${aw.week} MATCH</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">${aw.course}</h3>
-                        <div class="space-y-2 text-xs text-slate-300 mb-4">
-                            <div class="flex justify-between bg-slate-800/50 p-2 rounded"><span class="text-slate-400">Front 6 Tee:</span><span class="font-semibold text-blue-400">${aw.frontTee}</span></div>
-                            <div class="flex justify-between bg-slate-800/50 p-2 rounded"><span class="text-slate-400">Back 6 Tee:</span><span class="font-semibold text-amber-400">${aw.backTee}</span></div>
-                        </div>
-                        <div class="text-xs pt-2 border-t border-slate-800 flex justify-between items-center"><span class="text-slate-400">Winner:</span><span class="font-bold text-emerald-400">${aw.winner}</span></div>
-                    </div>
-                `;
-            });
-            document.getElementById('archive-grid-container').innerHTML = html;
         }
 
         function openAdminModal() {
@@ -614,19 +462,15 @@
         function handleAdminSubmit(e) {
             e.preventDefault();
             const teamName = document.getElementById('adminTeamSelect').value;
-            
-            // Gather all 12 hole scores
             let scores = [];
             for (let i = 1; i <= 12; i++) {
                 scores.push(parseInt(document.getElementById(`h${i}`).value));
             }
 
-            // Calculate segments automatically
             const s1 = scores.slice(0, 4).reduce((a, b) => a + b, 0);
             const s2 = scores.slice(4, 8).reduce((a, b) => a + b, 0);
             const s3 = scores.slice(8, 12).reduce((a, b) => a + b, 0);
             const totalScore = s1 + s2 + s3;
-            const toParVal = totalScore - 48;
 
             const weekData = leagueData[currentActiveWeek];
             if (!weekData.results) weekData.results = [];
@@ -638,27 +482,18 @@
                 teamRes.seg2 = s2;
                 teamRes.seg3 = s3;
                 teamRes.total = totalScore;
-                teamRes.toPar = (toParVal > 0 ? '+' : '') + toParVal;
             } else {
-                weekData.results.push({
-                    pos: weekData.results.length + 1,
-                    team: teamName,
-                    players: "League Participant",
-                    scores: scores,
-                    seg1: s1, seg2: s2, seg3: s3,
-                    total: totalScore,
-                    toPar: (toParVal > 0 ? '+' : '') + toParVal,
-                    pts: 4
-                });
+                weekData.results.push({ team: teamName, scores, seg1: s1, seg2: s2, seg3: s3, total: totalScore, pts: 6 });
             }
 
             localStorage.setItem('simGolfLeagueData', JSON.stringify(leagueData));
             changeWeek(currentActiveWeek);
             closeAdminModal();
-            alert(`Hole-by-hole scores saved and skins automatically calculated for ${teamName}!`);
+            alert(`Scores saved successfully for ${teamName}!`);
         }
 
         window.onload = function() {
+            populateTeamDropdown();
             renderStandings();
             renderArchive();
             changeWeek(4);
